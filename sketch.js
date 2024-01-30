@@ -1,6 +1,5 @@
 let currentColor = 'black';
-let swatches = new Arr
-
+let swatches = [];
 class colorSwatch
 {
     constructor(color,size,xPos,yPos) {
@@ -9,7 +8,7 @@ class colorSwatch
         this.x = xPos;
         this.y = yPos;
     }
-    clicked() 
+    handleMouse() 
     {
         if (dist(mouseX, mouseY, this.x, this.y) < this.size)
         {
@@ -24,7 +23,16 @@ function createSwatch(color,size,xPos,yPos)
   fill(color);
   square(xPos,yPos,size);
   let newSwatch = new colorSwatch(color,size,xPos,yPos);
+  swatches.unshift(newSwatch);
 }
+
+function mouseClicked()
+{
+  swatches.forEach(element => {
+    element.handleMouse();
+  });
+}
+
 
 function setup() {
   createCanvas(500, 400);
@@ -48,7 +56,16 @@ function draw() {
 
   //testing square
   fill(currentColor);
-  square(300,300,100);
+  square(0,300,100);
+
+  //drawing
+  if(mouseIsPressed)
+  {
+    stroke(currentColor);
+    strokeWeight(5);
+    line(pmouseX,pmouseY,mouseX,mouseY);
+  }
+
   
 }
 
