@@ -1,5 +1,6 @@
 let currentColor = 'black';
 let swatches = [];
+let backgroundDrawn = false;
 class colorSwatch
 {
     constructor(color,size,xPos,yPos) {
@@ -39,7 +40,12 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  if (!backgroundDrawn)
+  {
+    background(220);
+    backgroundDrawn = true;
+  }
+  
 
   //color pallete
   let swatchSize = 20;
@@ -47,16 +53,16 @@ function draw() {
   createSwatch('orange',swatchSize,0,0+swatchSize*1);
   createSwatch('yellow',swatchSize,0,0+swatchSize*2);
   createSwatch('green',swatchSize,0,0+swatchSize*3);
-  createSwatch('blue',swatchSize,0,0+swatchSize*4);
-  createSwatch('indigo',swatchSize,0,0+swatchSize*5);
-  createSwatch('violet',swatchSize,0,0+swatchSize*6);
+  createSwatch('cyan',swatchSize,0,0+swatchSize*4);
+  createSwatch('blue',swatchSize,0,0+swatchSize*5);
+  createSwatch('magenta',swatchSize,0,0+swatchSize*6);
   createSwatch('brown',swatchSize,0,0+swatchSize*7);
   createSwatch('white',swatchSize,0,0+swatchSize*8);
   createSwatch('black',swatchSize,0,0+swatchSize*9);
 
   //testing square
-  fill(currentColor);
-  square(0,300,100);
+  //fill(currentColor);
+  //square(0,300,100);
 
   //drawing
   if(mouseIsPressed)
